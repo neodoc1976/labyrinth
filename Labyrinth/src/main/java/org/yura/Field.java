@@ -1,5 +1,7 @@
 package org.yura;
 
+import static org.yura.Walker.*;
+
 /**
  * Created by Yulya on 01.04.2016.
  */
@@ -21,6 +23,7 @@ public class Field {
     public void printField() {
         int a = walker.getX();
         int b = walker.getY();
+        String d = walker.getDirection();
 
         printGorizontaLine(cells[0].length + 2);
         System.out.println();
@@ -32,8 +35,26 @@ public class Field {
 
             for (int x = 0; x < cells[y].length; x++) {
                 if (a == x && b == y) {
-                    System.out.print("R");
-                    System.out.print(" ");
+                    switch (d) {
+                        case RIGHT:
+                            System.out.print("> ");
+                            break;
+
+                        case LEFT:
+                            System.out.print("< ");
+                            break;
+
+                        case UP:
+                            System.out.print("^ ");
+                            break;
+
+                        case DOWN:
+                            System.out.print("v ");
+                            break;
+
+                    }
+                    // System.out.print("R");
+                    // System.out.print(" ");
                 } else {
                     System.out.print(cells[y][x]);
                     System.out.print(" ");

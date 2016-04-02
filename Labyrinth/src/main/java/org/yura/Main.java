@@ -2,17 +2,11 @@ package org.yura;
 
 import java.util.Scanner;
 import static org.yura.Field.*;
-
+import static org.yura.Walker.*;
 /**
  * Created by Yulya on 01.04.2016.
  */
 public class Main {
-    public static final String UP="u";// Список констант для case,що вказуюють на тип кроку.
-    public static final String DOWN="d";
-    public static final String LEFT="l";
-    public static final String RIGHT="r";
-
-
 
     public static void main(String[] args) {
         Field field = new Field();
