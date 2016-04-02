@@ -12,17 +12,21 @@ public class Walker {
     public int getY() {
         return y;
     }
-    public void  oneRight(){
+
+    public void oneRight() {
         x++;
     }
-    public void oneLeft(){
+
+    public void oneLeft() {
         x--;
 
     }
-    public void oneUp(){
+
+    public void oneUp() {
         y--;
     }
-    public void oneDown(){
+
+    public void oneDown() {
         y++;
     }
 }

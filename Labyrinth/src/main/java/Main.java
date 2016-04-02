@@ -13,7 +13,10 @@ public class Main {
                 {'o', 'x', 'x', 'o', 'o', 'o'},
                 {'o', 'o', 'o', 'x', 'x', 'o'},
                 {'o', 'o', 'o', 'o', 'o', 'o'},
-                {'o', 'o', 'o', 'o', 'o', 'o'}};
+                {'o', 'o', 'o', 'o', 'o', 'o'},
+
+
+        };
         field.setCells(cells);
         field.setWalker(walker);
         //field.printField();
@@ -31,7 +34,7 @@ public class Main {
                     field.printField();
                     break;
                 case "down":
-                case "d" :
+                case "d":
                     walker.oneDown();
                     field.printField();
                     break;
@@ -41,7 +44,7 @@ public class Main {
                     field.printField();
                     break;
                 case "left":
-                case"l":
+                case "l":
                     walker.oneLeft();
                     field.printField();
                     break;
