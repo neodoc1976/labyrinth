@@ -25,33 +25,38 @@ public class Main {
         //walker.oneDown();
         // field.printField();
         while (true) {
+            field.printField();
+            System.out.println();
+
             System.out.println("Введіть варіант бажаного напрямку кроку термінами 'up','down','right','left':");
             String state = sc.nextLine();
+
             switch (state) {
                 case "up":
                 case "u":
                     walker.oneUp();
-                    field.printField();
+
                     break;
                 case "down":
                 case "d":
                     walker.oneDown();
-                    field.printField();
+
                     break;
                 case "right":
                 case "r":
                     walker.oneRight();
-                    field.printField();
+
                     break;
                 case "left":
                 case "l":
                     walker.oneLeft();
-                    field.printField();
+
                     break;
                 case "exit":
                     System.exit(0);
                 default:
                     System.out.println("Невірний тип команди,повторіть:.");
+
 
             }
         }

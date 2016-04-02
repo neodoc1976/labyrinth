@@ -30,10 +30,7 @@ public class Field {
                 if (a == x && b == y) {
                     System.out.print("R");
                     System.out.print(" ");
-
-
                 } else {
-
                     System.out.print(cells[y][x]);
                     System.out.print(" ");
                 }
@@ -48,7 +45,6 @@ public class Field {
     private void Liner(int length) {
         for (int c = 0; c < length; c++) {
             System.out.print("- ");
-
         }
 
     }
