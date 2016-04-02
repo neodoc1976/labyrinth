@@ -1,9 +1,13 @@
+package org.yura;
+
 /**
  * Created by Yulya on 01.04.2016.
  */
 public class Field {
     char[][] cells;
     Walker walker;
+    public static final char REGULAR = 'o';//Список констант (символів),що відображають тип поля.
+    public static final char WALL = '*';
 
     public void setCells(char[][] c) {
         cells = c;
@@ -49,10 +53,13 @@ public class Field {
 
     }
 
+
     public void goRight(Walker walker) {
         int x = walker.getX() + 1;// Майбутня координата Х куди має піти робот.
-        if (x > cells[0].length - 1) {
-            System.out.println("Не можу рухатися в заданному напрямку");
+        int y = walker.getY(); //Майбутня координата Х куди має піти робот.(для визначення локації внутрішньої перешкоди)
+        if (x > cells[0].length - 1 || cells[y][x] == WALL) {
+            printMessage();
+
         } else {
             walker.oneRight();
         }
@@ -62,8 +69,9 @@ public class Field {
 
     public void goLeft(Walker walker) {
         int x = walker.getX() - 1;
-        if (x < 0) {
-            System.out.println("Не можу рухатися в заданному напрямку");
+        int y = walker.getY();
+        if (x < 0 || cells[y][x] == WALL) {
+            printMessage();
         } else {
             walker.oneLeft();
         }
@@ -73,8 +81,9 @@ public class Field {
 
     public void goUp(Walker walker) {
         int y = walker.getY() - 1;
-        if (y < 0) {
-            System.out.println("Не можу рухатися в заданному напрямку");
+        int x = walker.getX();
+        if (y < 0 || cells[y][x] == WALL) {
+            printMessage();
         } else {
             walker.oneUp();
         }
@@ -83,12 +92,17 @@ public class Field {
 
     public void goDown(Walker walker) {
         int y = walker.getY() + 1;
-        if (y > cells.length - 1) {
-            System.out.println("Не можу рухатися в заданному напрямку");
+        int x = walker.getX();
+        if (y > cells.length - 1 || cells[y][x] == WALL) {
+            printMessage();
         } else {
             walker.oneDown();
         }
 
+    }
+
+    private void printMessage() {
+        System.out.println("Не можу рухатися в заданному напрямку");
     }
 }
 

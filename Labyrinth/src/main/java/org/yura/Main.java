@@ -1,4 +1,7 @@
+package org.yura;
+
 import java.util.Scanner;
+import static org.yura.Field.*;
 
 /**
  * Created by Yulya on 01.04.2016.
@@ -8,8 +11,8 @@ public class Main {
     public static final String DOWN="d";
     public static final String LEFT="l";
     public static final String RIGHT="r";
-    public static final char REGULAR= 'O';//Список констант (символів),що відображають тип поля.
-    public static final char TRAP='X';
+
+
 
     public static void main(String[] args) {
         Field field = new Field();
@@ -17,8 +20,8 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         char[][] cells = {
                 {REGULAR, REGULAR, REGULAR,REGULAR, REGULAR, REGULAR},
-                {REGULAR, TRAP,TRAP,REGULAR, REGULAR, REGULAR},
-                {REGULAR, REGULAR, REGULAR,TRAP, TRAP, REGULAR},
+                {REGULAR, WALL, WALL,REGULAR, REGULAR, REGULAR},
+                {REGULAR, REGULAR, REGULAR, WALL, WALL, REGULAR},
                 {REGULAR, REGULAR, REGULAR,REGULAR, REGULAR, REGULAR},
                 {REGULAR, REGULAR, REGULAR,REGULAR, REGULAR, REGULAR},
 
