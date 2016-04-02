@@ -48,6 +48,24 @@ public class Field {
         }
 
     }
+
+    public void goRight(Walker walker) {
+        walker.oneRight();
+
+    }
+
+    public void goLeft(Walker walker) {
+        walker.oneLeft();
+    }
+
+    public void goUp(Walker walker) {
+        walker.oneUp();
+    }
+
+
+    public void goDown(Walker walker) {
+        walker.oneDown();
+    }
 }
 
 

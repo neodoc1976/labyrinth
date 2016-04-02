@@ -34,22 +34,25 @@ public class Main {
             switch (state) {
                 case "up":
                 case "u":
-                    walker.oneUp();
+
+                    field.goUp(walker);
 
                     break;
                 case "down":
                 case "d":
-                    walker.oneDown();
+                    field.goDown(walker);
 
                     break;
                 case "right":
                 case "r":
-                    walker.oneRight();
+
+                    field.goRight(walker);
 
                     break;
                 case "left":
                 case "l":
-                    walker.oneLeft();
+
+                    field.goLeft(walker);
 
                     break;
                 case "exit":
