@@ -18,7 +18,7 @@ public class Field {
         int a = walker.getX();
         int b = walker.getY();
 
-        Liner(cells[1].length + 2);
+        printGorizontaLine(cells[0].length + 2);
         System.out.println();
 
 
@@ -39,10 +39,10 @@ public class Field {
             System.out.println("|");
 
         }
-        Liner(cells[1].length + 2);
+        printGorizontaLine(cells[0].length + 2);
     }
 
-    private void Liner(int length) {
+    private void printGorizontaLine(int length) {
         for (int c = 0; c < length; c++) {
             System.out.print("- ");
         }
@@ -50,21 +50,45 @@ public class Field {
     }
 
     public void goRight(Walker walker) {
-        walker.oneRight();
+        int x = walker.getX() + 1;// Майбутня координата Х куди має піти робот.
+        if (x > cells[0].length - 1) {
+            System.out.println("Не можу рухатися в заданному напрямку");
+        } else {
+            walker.oneRight();
+        }
+
 
     }
 
     public void goLeft(Walker walker) {
-        walker.oneLeft();
+        int x = walker.getX() - 1;
+        if (x < 0) {
+            System.out.println("Не можу рухатися в заданному напрямку");
+        } else {
+            walker.oneLeft();
+        }
+
+
     }
 
     public void goUp(Walker walker) {
-        walker.oneUp();
+        int y = walker.getY() - 1;
+        if (y < 0) {
+            System.out.println("Не можу рухатися в заданному напрямку");
+        } else {
+            walker.oneUp();
+        }
     }
 
 
     public void goDown(Walker walker) {
-        walker.oneDown();
+        int y = walker.getY() + 1;
+        if (y > cells.length - 1) {
+            System.out.println("Не можу рухатися в заданному напрямку");
+        } else {
+            walker.oneDown();
+        }
+
     }
 }
 
