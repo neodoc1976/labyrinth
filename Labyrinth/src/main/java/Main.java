@@ -4,26 +4,29 @@ import java.util.Scanner;
  * Created by Yulya on 01.04.2016.
  */
 public class Main {
+    public static final String UP="u";// Список констант для case,що вказуюють на тип кроку.
+    public static final String DOWN="d";
+    public static final String LEFT="l";
+    public static final String RIGHT="r";
+    public static final char REGULAR= 'O';//Список констант (символів),що відображають тип поля.
+    public static final char TRAP='X';
+
     public static void main(String[] args) {
         Field field = new Field();
         Walker walker = new Walker();
         Scanner sc = new Scanner(System.in);
         char[][] cells = {
-                {'o', 'o', 'o', 'o', 'o', 'o'},
-                {'o', 'x', 'x', 'o', 'o', 'o'},
-                {'o', 'o', 'o', 'x', 'x', 'o'},
-                {'o', 'o', 'o', 'o', 'o', 'o'},
-                {'o', 'o', 'o', 'o', 'o', 'o'},
+                {REGULAR, REGULAR, REGULAR,REGULAR, REGULAR, REGULAR},
+                {REGULAR, TRAP,TRAP,REGULAR, REGULAR, REGULAR},
+                {REGULAR, REGULAR, REGULAR,TRAP, TRAP, REGULAR},
+                {REGULAR, REGULAR, REGULAR,REGULAR, REGULAR, REGULAR},
+                {REGULAR, REGULAR, REGULAR,REGULAR, REGULAR, REGULAR},
 
 
         };
         field.setCells(cells);
         field.setWalker(walker);
-        //field.printField();
-        // walker.oneRight();
-        // walker.oneRight();
-        //walker.oneDown();
-        // field.printField();
+
         while (true) {
             field.printField();
             System.out.println();
@@ -32,25 +35,24 @@ public class Main {
             String state = sc.nextLine();
 
             switch (state) {
-                case "up":
-                case "u":
+                case UP:
 
                     field.goUp(walker);
 
                     break;
-                case "down":
-                case "d":
+                case DOWN:
+
                     field.goDown(walker);
 
                     break;
-                case "right":
-                case "r":
+                case RIGHT:
+
 
                     field.goRight(walker);
 
                     break;
-                case "left":
-                case "l":
+                case LEFT:
+
 
                     field.goLeft(walker);
 
