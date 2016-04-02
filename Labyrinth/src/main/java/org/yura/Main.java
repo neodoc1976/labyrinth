@@ -12,12 +12,12 @@ public class Main {
         Field field = new Field();
         Walker walker = new Walker();
         Scanner sc = new Scanner(System.in);
-        char[][] cells = {
-                {REGULAR, REGULAR, REGULAR,REGULAR, REGULAR, REGULAR},
-                {REGULAR, WALL, WALL,REGULAR, REGULAR, REGULAR},
-                {REGULAR, REGULAR, REGULAR, WALL, WALL, REGULAR},
-                {REGULAR, REGULAR, REGULAR,REGULAR, REGULAR, REGULAR},
-                {REGULAR, REGULAR, REGULAR,REGULAR, REGULAR, REGULAR},
+        Cell[][] cells = {
+                {new Cell(REGULAR),  new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell (REGULAR),new Cell(REGULAR)},
+                {new Cell(REGULAR),  new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell (WALL),new Cell(REGULAR)},
+                {new Cell(REGULAR),  new Cell(WALL),new Cell(REGULAR), new Cell(WALL), new Cell (REGULAR),new Cell(REGULAR)},
+                {new Cell(REGULAR),  new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell (REGULAR),new Cell(REGULAR)},
+                {new Cell(REGULAR),  new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell (REGULAR),new Cell(WALL)},
 
 
         };
