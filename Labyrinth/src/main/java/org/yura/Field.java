@@ -76,13 +76,32 @@ public class Field {
 
 
     public void goRight(Walker walker) {
+
         int x = walker.getX() + 1;// Майбутня координата Х куди має піти робот.
         int y = walker.getY(); //Майбутня координата Х куди має піти робот.(для визначення локації внутрішньої перешкоди)
         if (x > cells[0].length - 1 || cells[y][x].getType() == WALL) {
             printMessage();
+            walker.decreaseHp();
+            System.out.println("НР робота "+walker.getHp()+"%");
 
-        } else {
+            if (walker.getHp()== 10) {
+                System.out.println("Обережно,у робота залишилося HP на один невірний крок!");
+            }
+            if (walker.getHp() == 0) {
+                System.out.println("Робот загинув :(");
+                System.out.println("GAME OVER");
+                System.exit(0);
+
+
+            }
+
+
+        } else
+
+        {
             walker.oneRight();
+            System.out.println("НР робота "+walker.getHp()+"%");
+
         }
 
 
@@ -93,8 +112,23 @@ public class Field {
         int y = walker.getY();
         if (x < 0 || cells[y][x].getType() == WALL) {
             printMessage();
+            walker.decreaseHp();
+            System.out.println("НР робота "+walker.getHp()+"%");
+
+            if (walker.getHp()== 10) {
+                System.out.println("Обережно,у робота залишилося HP на один невірний крок!");
+            }
+            if (walker.getHp() == 0) {
+                System.out.println("Робот загинув :(");
+                System.out.println("GAME OVER");
+                System.exit(0);
+
+
+            }
         } else {
             walker.oneLeft();
+            System.out.println("НР робота "+walker.getHp()+"%");
+
         }
 
 
@@ -105,8 +139,22 @@ public class Field {
         int x = walker.getX();
         if (y < 0 || cells[y][x].getType() == WALL) {
             printMessage();
+            walker.decreaseHp();
+            System.out.println("НР робота "+walker.getHp()+"%");
+            if (walker.getHp()== 10) {
+                System.out.println("Обережно,у робота залишилося HP на один невірний крок!");
+            }
+            if (walker.getHp() == 0) {
+                System.out.println("Робот загинув :(");
+                System.out.println("GAME OVER");
+                System.exit(0);
+
+
+            }
         } else {
             walker.oneUp();
+            System.out.println("НР робота "+walker.getHp()+"%");
+
         }
     }
 
@@ -116,15 +164,35 @@ public class Field {
         int x = walker.getX();
         if (y > cells.length - 1 || cells[y][x].getType() == WALL) {
             printMessage();
+            walker.decreaseHp();
+            System.out.println("НР робота "+walker.getHp()+"%");
+
+            if (walker.getHp()== 10) {
+                System.out.println("Обережно,у робота залишилося HP на один невірний крок!");
+            }
+            if (walker.getHp() == 0) {
+                System.out.println("Робот загинув :(");
+                System.out.println("GAME OVER");
+                System.exit(0);
+
+ {
+
+}
+
+            }
+
         } else {
             walker.oneDown();
+            System.out.println("НР робота "+walker.getHp()+"%");
+
         }
 
     }
 
     private void printMessage() {
-        System.out.println("Не можу рухатися в заданному напрямку");
+        System.out.println("Не можу рухатися в заданному напрямку!");
     }
 }
+
 
 

@@ -9,10 +9,14 @@ public class Walker {
     public static final String LEFT="l";
     public static final String RIGHT="r";
 
+    private int hp=100;
     private int x;
     private int y;
     private String direction=RIGHT;
 
+
+
+    public int getHp(){return hp;}
     public int getX() {
         return x;
     }
@@ -42,5 +46,8 @@ public class Walker {
     public void oneDown() {
         y++;
         direction=DOWN;
+    }
+    public void decreaseHp(){
+        hp=hp-10;
     }
 }
