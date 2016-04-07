@@ -47,7 +47,20 @@ public class Walker {
         y++;
         direction=DOWN;
     }
+    public void lossLargePartHP(){hp=hp-25;}
     public void decreaseHp(){
         hp=hp-10;
+    }
+    public void turnRight(){
+        direction=RIGHT;
+    }
+    public void turnLeft(){
+        direction=LEFT;
+    }
+    public void turnUp(){
+        direction=UP;
+    }
+    public void turnDown(){
+        direction=DOWN;
     }
 }

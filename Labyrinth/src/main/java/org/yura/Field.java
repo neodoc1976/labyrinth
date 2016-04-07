@@ -10,6 +10,7 @@ public class Field {
     Walker walker;
     public static final char REGULAR = 'o';//Список констант (символів),що відображають тип поля.
     public static final char WALL = '*';
+    public static final char TRAP = '#';
 
     public void setCells(Cell[][] c) {
         cells = c;
@@ -79,55 +80,45 @@ public class Field {
 
         int x = walker.getX() + 1;// Майбутня координата Х куди має піти робот.
         int y = walker.getY(); //Майбутня координата Х куди має піти робот.(для визначення локації внутрішньої перешкоди)
+
         if (x > cells[0].length - 1 || cells[y][x].getType() == WALL) {
-            printMessage();
-            walker.decreaseHp();
-            System.out.println("НР робота "+walker.getHp()+"%");
 
-            if (walker.getHp()== 10) {
-                System.out.println("Обережно,у робота залишилося HP на один невірний крок!");
-            }
-            if (walker.getHp() == 0) {
-                System.out.println("Робот загинув :(");
-                System.out.println("GAME OVER");
-                System.exit(0);
+            walker.turnRight();
+            showHealthDecrease();
 
+        } else if (cells[y][x].getType() == TRAP) {
 
-            }
-
-
-        } else
-
-        {
             walker.oneRight();
-            System.out.println("НР робота "+walker.getHp()+"%");
+            showTrapDamage();
+
+        } else {
+            walker.oneRight();
+            printMessageHpLevel();
 
         }
 
 
     }
 
+
     public void goLeft(Walker walker) {
         int x = walker.getX() - 1;
         int y = walker.getY();
+
         if (x < 0 || cells[y][x].getType() == WALL) {
-            printMessage();
-            walker.decreaseHp();
-            System.out.println("НР робота "+walker.getHp()+"%");
 
-            if (walker.getHp()== 10) {
-                System.out.println("Обережно,у робота залишилося HP на один невірний крок!");
-            }
-            if (walker.getHp() == 0) {
-                System.out.println("Робот загинув :(");
-                System.out.println("GAME OVER");
-                System.exit(0);
+            walker.turnLeft();
+            showHealthDecrease();
+
+        } else if (cells[y][x].getType() == TRAP) {
+
+            walker.oneLeft();
+            showTrapDamage();
 
 
-            }
         } else {
             walker.oneLeft();
-            System.out.println("НР робота "+walker.getHp()+"%");
+            printMessageHpLevel();
 
         }
 
@@ -137,23 +128,21 @@ public class Field {
     public void goUp(Walker walker) {
         int y = walker.getY() - 1;
         int x = walker.getX();
+
         if (y < 0 || cells[y][x].getType() == WALL) {
-            printMessage();
-            walker.decreaseHp();
-            System.out.println("НР робота "+walker.getHp()+"%");
-            if (walker.getHp()== 10) {
-                System.out.println("Обережно,у робота залишилося HP на один невірний крок!");
-            }
-            if (walker.getHp() == 0) {
-                System.out.println("Робот загинув :(");
-                System.out.println("GAME OVER");
-                System.exit(0);
 
+            walker.turnUp();
+            showHealthDecrease();
 
-            }
-        } else {
+        } else if (cells[y][x].getType() == TRAP) {
+
             walker.oneUp();
-            System.out.println("НР робота "+walker.getHp()+"%");
+            showTrapDamage();
+
+        } else {
+
+            walker.oneUp();
+            printMessageHpLevel();
 
         }
     }
@@ -162,37 +151,100 @@ public class Field {
     public void goDown(Walker walker) {
         int y = walker.getY() + 1;
         int x = walker.getX();
+
         if (y > cells.length - 1 || cells[y][x].getType() == WALL) {
-            printMessage();
-            walker.decreaseHp();
-            System.out.println("НР робота "+walker.getHp()+"%");
 
-            if (walker.getHp()== 10) {
-                System.out.println("Обережно,у робота залишилося HP на один невірний крок!");
-            }
-            if (walker.getHp() == 0) {
-                System.out.println("Робот загинув :(");
-                System.out.println("GAME OVER");
-                System.exit(0);
+            walker.turnDown();
+            showHealthDecrease();
 
- {
+        } else if (cells[y][x].getType() == TRAP) {
 
-}
-
-            }
+            walker.oneDown();
+            showTrapDamage();
 
         } else {
             walker.oneDown();
-            System.out.println("НР робота "+walker.getHp()+"%");
+            printMessageHpLevel();
+
 
         }
 
     }
 
-    private void printMessage() {
-        System.out.println("Не можу рухатися в заданному напрямку!");
+    private void showTrapDamage() {
+
+        walker.lossLargePartHP();
+
+        if (walker.getHp() <= 0) {
+            System.out.println("Робот потрапив на міну!");
+            System.out.println("Робот загинув :(");
+            System.out.println("Фінальна позиція робота,вісь X: " +(walker.getX() + 1)+ " ,вісь Y: " + (walker.getY() + 1));
+            System.out.println("GAME OVER");
+            printField();
+            System.exit(0);
+
+        } else {
+            System.out.println("Робот потрапив на міну!");
+            System.out.println("Втрачено значну частину НР!");
+            printMessageHpLevel();
+        }
+
     }
+
+    private void showHealthDecrease() {
+        printMessageNotMove();
+        walker.decreaseHp();
+        System.out.println("НР робота " + walker.getHp() + "%");
+
+        if (walker.getHp() <= 25) {
+            System.out.println("Обережно,у робота залишилася незначна частка HP,наступний крок може призвести до загибелі!");
+        }
+        if (walker.getHp() <= 0) {
+
+
+            System.out.println("Робот загинув :(");
+            System.out.println("Фінальна позиція робота,вісь X: " + (walker.getX() + 1) + " ,вісь Y: " + (walker.getY() + 1))
+            ;
+            String d = walker.getDirection();
+            if (d == RIGHT) {
+                walker.turnRight();
+                printField();
+
+            }
+            if (d == LEFT) {
+                walker.turnLeft();
+                printField();
+
+            }
+            if (d == UP) {
+                walker.turnUp();
+                printField();
+            }
+            if (d == DOWN) {
+                walker.turnDown();
+                printField();
+
+
+            }
+            System.out.println();
+            System.out.println("GAME OVER");
+            System.exit(0);
+        }
+
+    }
+
+
+    private void printMessageNotMove() {
+        System.out.println("Не можу рухатися в заданному напрямку!");
+        System.out.println("Втратив частину НР від удару об стіну!");
+    }
+
+    private void printMessageHpLevel() {
+        System.out.println("НР робота" + walker.getHp() + "%");
+    }
+
 }
+
 
 
 

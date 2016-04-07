@@ -13,8 +13,9 @@ public class Cell {
     public boolean getVisible(){
         return visible;
     }
-    public Cell(char t){  // Конструктор
-        type=t;
+    public Cell(char t) {  // Конструктор
+        type = t;
+
 
     }
 

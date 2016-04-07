@@ -13,11 +13,11 @@ public class Main {
         Walker walker = new Walker();
         Scanner sc = new Scanner(System.in);
         Cell[][] cells = {
-                {new Cell(REGULAR),  new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell (REGULAR),new Cell(REGULAR)},
-                {new Cell(REGULAR),  new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell (WALL),new Cell(REGULAR)},
-                {new Cell(REGULAR),  new Cell(WALL),new Cell(REGULAR), new Cell(WALL), new Cell (REGULAR),new Cell(REGULAR)},
-                {new Cell(REGULAR),  new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell (REGULAR),new Cell(REGULAR)},
-                {new Cell(REGULAR),  new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell (REGULAR),new Cell(WALL)},
+                {new Cell(REGULAR),  new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell (REGULAR),new Cell(REGULAR),new Cell(REGULAR),new Cell(REGULAR),new Cell(REGULAR),new Cell(REGULAR),new Cell(REGULAR)},
+                {new Cell(REGULAR),  new Cell(REGULAR),new Cell(TRAP), new Cell(REGULAR), new Cell (WALL),new Cell(REGULAR),new Cell(REGULAR),new Cell(REGULAR),new Cell(REGULAR),new Cell(REGULAR),new Cell(REGULAR)},
+                {new Cell(REGULAR),  new Cell(WALL),new Cell(REGULAR), new Cell(WALL), new Cell (REGULAR),new Cell(REGULAR),new Cell(REGULAR),new Cell(REGULAR),new Cell(REGULAR),new Cell(REGULAR),new Cell(REGULAR)},
+                {new Cell(REGULAR),  new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell (REGULAR),new Cell(REGULAR),new Cell(REGULAR),new Cell(REGULAR),new Cell(WALL),new Cell(REGULAR),new Cell(REGULAR)},
+                {new Cell(REGULAR),  new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell (REGULAR),new Cell(WALL),new Cell(REGULAR),new Cell(REGULAR),new Cell(REGULAR),new Cell(REGULAR),new Cell(REGULAR)},
 
 
         };
