@@ -15,6 +15,7 @@ public class Field {
     public void setCells(Cell[][] c) {
         cells = c;
 
+
     }
 
     public void setWalker(Walker w) {
@@ -90,6 +91,8 @@ public class Field {
 
             walker.oneRight();
             showTrapDamage();
+            cells[walker.getY()][walker.getX()]=new Cell(REGULAR) ;
+
 
         } else {
             walker.oneRight();
@@ -114,6 +117,7 @@ public class Field {
 
             walker.oneLeft();
             showTrapDamage();
+            cells[walker.getY()][walker.getX()]=new Cell(REGULAR) ;
 
 
         } else {
@@ -138,6 +142,7 @@ public class Field {
 
             walker.oneUp();
             showTrapDamage();
+            cells[walker.getY()][walker.getX()]=new Cell(REGULAR) ;
 
         } else {
 
@@ -161,6 +166,10 @@ public class Field {
 
             walker.oneDown();
             showTrapDamage();
+            cells[walker.getY()][walker.getX()]=new Cell(REGULAR) ;
+
+
+
 
         } else {
             walker.oneDown();
@@ -175,6 +184,7 @@ public class Field {
 
         walker.lossLargePartHP();
 
+
         if (walker.getHp() <= 0) {
             System.out.println("Робот потрапив на міну!");
             System.out.println("Робот загинув :(");
@@ -186,6 +196,9 @@ public class Field {
         } else {
             System.out.println("Робот потрапив на міну!");
             System.out.println("Втрачено значну частину НР!");
+            if (walker.getHp() <= 25 && walker.getHp()>0) {
+                System.out.println("Обережно,у робота залишилася незначна частка HP,настуупний крок може призвести до загибелі!");
+            }
             printMessageHpLevel();
         }
 
@@ -196,7 +209,7 @@ public class Field {
         walker.decreaseHp();
         System.out.println("НР робота " + walker.getHp() + "%");
 
-        if (walker.getHp() <= 25) {
+        if (walker.getHp() <= 25 && walker.getHp()>0) {
             System.out.println("Обережно,у робота залишилася незначна частка HP,наступний крок може призвести до загибелі!");
         }
         if (walker.getHp() <= 0) {
