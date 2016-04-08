@@ -47,6 +47,9 @@ public class Walker {
         y++;
         direction=DOWN;
     }
+    public void applyMedkit(){
+        hp=hp+25;
+    }
     public void lossLargePartHP(){hp=hp-25;}
     public void decreaseHp(){
         hp=hp-10;

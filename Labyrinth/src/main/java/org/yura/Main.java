@@ -14,9 +14,9 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         Cell[][] cells = {
                 {new Cell(REGULAR),  new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell (REGULAR),new Cell(REGULAR),new Cell(REGULAR),new Cell(REGULAR),new Cell(REGULAR),new Cell(REGULAR),new Cell(REGULAR)},
-                {new Cell(REGULAR),  new Cell(REGULAR),new Cell(TRAP), new Cell(REGULAR), new Cell (WALL),new Cell(REGULAR),new Cell(REGULAR),new Cell(REGULAR),new Cell(REGULAR),new Cell(REGULAR),new Cell(REGULAR)},
+                {new Cell(REGULAR),  new Cell(REGULAR),new Cell(TRAP), new Cell(REGULAR), new Cell (WALL),new Cell(REGULAR),new Cell(MEDKIT),new Cell(REGULAR),new Cell(REGULAR),new Cell(REGULAR),new Cell(REGULAR)},
                 {new Cell(REGULAR),  new Cell(WALL),new Cell(REGULAR), new Cell(WALL), new Cell (REGULAR),new Cell(REGULAR),new Cell(TRAP),new Cell(REGULAR),new Cell(REGULAR),new Cell(REGULAR),new Cell(REGULAR)},
-                {new Cell(REGULAR),  new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell (REGULAR),new Cell(REGULAR),new Cell(REGULAR),new Cell(TRAP),new Cell(WALL),new Cell(REGULAR),new Cell(REGULAR)},
+                {new Cell(REGULAR),  new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell (REGULAR),new Cell(REGULAR),new Cell(REGULAR),new Cell(TRAP),new Cell(WALL),new Cell(MEDKIT),new Cell(REGULAR)},
                 {new Cell(REGULAR),  new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell (REGULAR),new Cell(WALL),new Cell(REGULAR),new Cell(REGULAR),new Cell(REGULAR),new Cell(REGULAR),new Cell(REGULAR)},
 
 

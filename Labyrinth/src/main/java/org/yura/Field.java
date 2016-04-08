@@ -11,6 +11,7 @@ public class Field {
     public static final char REGULAR = 'o';//Список констант (символів),що відображають тип поля.
     public static final char WALL = '*';
     public static final char TRAP = '#';
+    public static final char MEDKIT='+';
 
     public void setCells(Cell[][] c) {
         cells = c;
@@ -91,7 +92,14 @@ public class Field {
 
             walker.oneRight();
             showTrapDamage();
-            cells[walker.getY()][walker.getX()]=new Cell(REGULAR) ;
+            cells[walker.getY()][walker.getX()] = new Cell(REGULAR);
+
+        }else if (cells[y][x].getType() == MEDKIT){
+
+            walker.oneRight();
+            showMedCitHelp();
+            cells[walker.getY()][walker.getX()] = new Cell(REGULAR);
+
 
 
         } else {
@@ -119,6 +127,12 @@ public class Field {
             showTrapDamage();
             cells[walker.getY()][walker.getX()]=new Cell(REGULAR) ;
 
+        }else if (cells[y][x].getType() == MEDKIT){
+
+            walker.oneLeft();
+            showMedCitHelp();
+            cells[walker.getY()][walker.getX()] = new Cell(REGULAR);
+
 
         } else {
             walker.oneLeft();
@@ -144,6 +158,12 @@ public class Field {
             showTrapDamage();
             cells[walker.getY()][walker.getX()]=new Cell(REGULAR) ;
 
+        }else if (cells[y][x].getType() == MEDKIT){
+
+            walker.oneUp();
+            showMedCitHelp();
+            cells[walker.getY()][walker.getX()] = new Cell(REGULAR);
+
         } else {
 
             walker.oneUp();
@@ -168,7 +188,11 @@ public class Field {
             showTrapDamage();
             cells[walker.getY()][walker.getX()]=new Cell(REGULAR) ;
 
+        }else if (cells[y][x].getType() == MEDKIT){
 
+            walker.oneDown();
+            showMedCitHelp();
+            cells[walker.getY()][walker.getX()] = new Cell(REGULAR);
 
 
         } else {
@@ -177,6 +201,13 @@ public class Field {
 
 
         }
+
+    }
+    private void showMedCitHelp(){
+
+        walker.applyMedkit();
+        System.out.println( "Робот знайшов аптечку,рівень здоров'я підвищився !");
+        printMessageHpLevel();
 
     }
 
