@@ -4,19 +4,23 @@ package org.yura;
  * Created by Yulya on 01.04.2016.
  */
 public class Walker {
-    public static final String UP="u";// Список констант для case,що вказуюють на тип кроку.
-    public static final String DOWN="d";
-    public static final String LEFT="l";
-    public static final String RIGHT="r";
+    public static final String UP = "u";// Список констант для case,що вказуюють на тип кроку.
+    public static final String DOWN = "d";
+    public static final String LEFT = "l";
+    public static final String RIGHT = "r";
+    public static final String TURN="t";
+    public static final String STEP="s";
 
-    private int hp=100;
+    private int hp = 100;
     private int x;
     private int y;
-    private String direction=RIGHT;
+    private String direction = RIGHT;
 
 
+    public int getHp() {
+        return hp;
+    }
 
-    public int getHp(){return hp;}
     public int getX() {
         return x;
     }
@@ -25,45 +29,64 @@ public class Walker {
         return y;
     }
 
-    public String getDirection(){ return direction;}
+    public String getDirection() {
+        return direction;
+    }
 
     public void oneRight() {
         x++;
-        direction=RIGHT;
+        direction = RIGHT;
     }
+
     public void oneLeft() {
         x--;
-        direction=LEFT;
+        direction = LEFT;
 
 
     }
 
     public void oneUp() {
         y--;
-        direction=UP;
+        direction = UP;
     }
 
     public void oneDown() {
         y++;
-        direction=DOWN;
+        direction = DOWN;
     }
-    public void applyMedkit(){
-        hp=hp+25;
+    public void teleport(){
+        x=0;
+        y=0;
     }
-    public void lossLargePartHP(){hp=hp-25;}
-    public void decreaseHp(){
-        hp=hp-10;
+
+    public void applyMedkit() {
+        hp = hp + 25;
     }
-    public void turnRight(){
-        direction=RIGHT;
+
+    public void lossLargePartHP() {
+        hp = hp - 25;
     }
-    public void turnLeft(){
-        direction=LEFT;
+
+    public void decreaseHp() {
+        hp = hp - 10;
     }
-    public void turnUp(){
-        direction=UP;
+
+    public void turnRight() {
+        direction = RIGHT;
     }
-    public void turnDown(){
-        direction=DOWN;
+
+    public void turnLeft() {
+        direction = LEFT;
     }
+
+    public void turnUp() {
+        direction = UP;
+    }
+
+    public void turnDown() {
+        direction = DOWN;
+    }
+
+
 }
+
