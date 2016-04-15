@@ -38,21 +38,48 @@ public class Field {
                 if (a == x && b == y) {
                     switch (d) {
                         case RIGHT:
-                            System.out.print("> ");
+                            System.out.print((char)(707));
+
+                            if(x<cells[y].length-1){
+                            System.out.print(cells [y][x+1].getType());
+
+                            }else{
+                                System.out.print(" ");
+                            }
                             break;
+
                         case LEFT:
-                            System.out.print("< ");
+                            System.out.print((char)(706));
+
+                            if (x>0){
+                                System.out.print(cells[y][x-1].getType());
+
+                            }else{
+                                System.out.print(" ");
+                            }
                             break;
                         case UP:
-                            System.out.print("^ ");
+                            System.out.print((char)(708));
+                            if (y>0){
+                                System.out.print(cells[y-1][x].getType());
+                            }else{
+                                System.out.print(" ");
+                            }
+
                             break;
                         case DOWN:
-                            System.out.print("v ");
+                            System.out.print("v");
+                            if (y<cells.length-1){
+                                System.out.print(cells[y+1][x].getType());
+                            }else{
+                                System.out.print((char)(709));
+                            }
                             break;
                     }
 
                 } else {
-                    System.out.print(cells[y][x].getType());
+                    //System.out.print(cells[y][x].getType()); //Варіант коли все поле є видимим
+                    System.out.print(" "); //Варіант невидимого поля(окрім елементів в полі зору робота)
                     System.out.print(" ");
                 }
             }
@@ -79,20 +106,24 @@ public class Field {
             walker.turnRight();
             showHealthDecrease();
         } else if (cells[y][x].getType() == TRAP) {
+            walker.turnRight();
             walker.oneRight();
             showTrapDamage();
             cells[walker.getY()][walker.getX()] = new Cell(REGULAR);
         } else if (cells[y][x].getType() == MEDKIT) {
+            walker.turnRight();
             walker.oneRight();
             showMedCitHelp();
             cells[walker.getY()][walker.getX()] = new Cell(REGULAR);
         } else if (cells[y][x].getType() == TELEPORT) {
+            walker.turnRight();
             walker.oneRight();
             walker.teleport();
             System.out.println("Робота телепортовано на початкову позицію!");
             printMessageHpLevel();
 
         } else {
+            walker.turnRight();
             walker.oneRight();
             printMessageHpLevel();
 
@@ -190,7 +221,7 @@ public class Field {
     private void showTrapDamage() {
 
         walker.lossLargePartHP();
-        System.out.println("Уппс!!! Робот потрапив на міну!!! Втрачено значну частину НР!");
+        System.out.println("BOOM!Робот потрапив на міну.Втрачено значну частину НР.");
         checkHealth();
     }
 

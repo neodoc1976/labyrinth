@@ -15,13 +15,16 @@ public class Main {
         Walker walker = new Walker();
         Scanner sc = new Scanner(System.in);
         Cell[][] cells = {
-                {new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(TELEPORT), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR)},
-                {new Cell(REGULAR), new Cell(REGULAR), new Cell(TRAP), new Cell(REGULAR), new Cell(WALL), new Cell(REGULAR), new Cell(MEDKIT), new Cell(REGULAR), new Cell(TELEPORT), new Cell(REGULAR), new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR)},
-                {new Cell(REGULAR), new Cell(WALL), new Cell(REGULAR), new Cell(WALL), new Cell(REGULAR), new Cell(REGULAR), new Cell(TRAP), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR)},
-                {new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(TRAP), new Cell(WALL), new Cell(MEDKIT), new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR)},
-                {new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(WALL), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR)},
-
-
+                {new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR)},
+                {new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR)},
+                {new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR)},
+                {new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR)},
+                {new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR)},
+                {new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR)},
+                {new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR)},
+                {new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR)},
+                {new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR)},
+                {new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR)},
         };
         field.setCells(cells);
         field.setWalker(walker);
@@ -29,11 +32,12 @@ public class Main {
         while (true) {
             field.printField();
             System.out.println();
+            System.out.println("Поточні координати робота: вісь X(" + (walker.getX())+")" + ",вісь Y(" + (walker.getY())+")");
+            System.out.println();
             System.out.println("Зробіть вибір дії: крок (символ 's') ,або поворот на місці (символ 't'):");
             String variant = sc.nextLine();
-
-
             switch (variant) {
+
                 case STEP:
 
                     System.out.println("Введіть варіант бажаного напрямку КРОКУ термінами 'up','down','right','left':");
@@ -97,10 +101,16 @@ public class Main {
                             System.exit(0);
 
                         default:
-                            System.out.println("Невірний тип команди,повтOріть:.");
+                            System.out.println("Невірний тип команди,повторіть:.");
                             break;
 
                     }
+
+                    break;
+
+                default:
+                    System.out.println("Невірний тип команди,повторіть:.");
+                    break;
             }
 
         }
