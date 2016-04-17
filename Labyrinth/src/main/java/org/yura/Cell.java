@@ -11,6 +11,7 @@ public class Cell {
         return type;
     }
     public boolean getVisible(){
+
         return visible;
     }
     public Cell(char t) {  // Конструктор
@@ -18,9 +19,7 @@ public class Cell {
 
 
     }
-    public void lookRight(){
 
-    }
 
 
 

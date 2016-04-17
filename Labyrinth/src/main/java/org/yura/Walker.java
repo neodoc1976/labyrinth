@@ -33,27 +33,7 @@ public class Walker {
         return direction;
     }
 
-    public void oneRight() {
-        x++;
-        direction = RIGHT;
-    }
 
-    public void oneLeft() {
-        x--;
-        direction = LEFT;
-
-
-    }
-
-    public void oneUp() {
-        y--;
-        direction = UP;
-    }
-
-    public void oneDown() {
-        y++;
-        direction = DOWN;
-    }
     public void teleport(){
         x=0;
         y=0;
@@ -71,20 +51,29 @@ public class Walker {
         hp = hp - 10;
     }
 
-    public void turnRight() {
-        direction = RIGHT;
-    }
+    public void turn(String d){
+        direction=d;
 
-    public void turnLeft() {
-        direction = LEFT;
     }
-
-    public void turnUp() {
-        direction = UP;
-    }
-
-    public void turnDown() {
-        direction = DOWN;
+    public void move (String d){
+        switch(d){
+            case UP:
+                direction=UP;
+                y--;
+                break;
+            case DOWN:
+                direction=DOWN;
+                y++;
+                break;
+            case RIGHT:
+                direction=RIGHT;
+                x++;
+                break;
+            case LEFT:
+                direction=LEFT;
+                x--;
+                break;
+        }
     }
 
 

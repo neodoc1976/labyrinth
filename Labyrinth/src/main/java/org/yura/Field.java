@@ -38,48 +38,49 @@ public class Field {
                 if (a == x && b == y) {
                     switch (d) {
                         case RIGHT:
-                            System.out.print((char)(707));
+                            System.out.print("> ");
 
-                            if(x<cells[y].length-1){
-                            System.out.print(cells [y][x+1].getType());
+                            // if(x<cells[y].length-1){
+                            //System.out.print(cells [y][x+1].getType());
 
-                            }else{
-                                System.out.print(" ");
-                            }
+                            // }else{
+                            //     System.out.print(" ");
+                            // }
                             break;
 
                         case LEFT:
-                            System.out.print((char)(706));
+                            System.out.print("< ");
 
-                            if (x>0){
-                                System.out.print(cells[y][x-1].getType());
+                            // if (x>0){
+                            //    System.out.print(cells[y][x-1].getType());
 
-                            }else{
-                                System.out.print(" ");
-                            }
-                            break;
+                            //  }else{
+                            //     System.out.print(" ");
+                            // }
+                              break;
                         case UP:
-                            System.out.print((char)(708));
-                            if (y>0){
-                                System.out.print(cells[y-1][x].getType());
-                            }else{
-                                System.out.print(" ");
-                            }
+                            System.out.print("^ ");
+                            // if (y>0){
+                            //    System.out.print(cells[y-1][x].getType());
+                            // }else{
+                            //     System.out.print(" ");
+                            // }
 
                             break;
                         case DOWN:
-                            System.out.print("v");
-                            if (y<cells.length-1){
-                                System.out.print(cells[y+1][x].getType());
-                            }else{
-                                System.out.print((char)(709));
-                            }
+                             System.out.print("v ");
+                            //  if (y<cells.length-1){
+                            //     System.out.print(cells[x][y+1].getType());
+                            // }else{
+                            //     System.out.print(" ");
+                            //  }
                             break;
                     }
 
                 } else {
-                    //System.out.print(cells[y][x].getType()); //Варіант коли все поле є видимим
-                    System.out.print(" "); //Варіант невидимого поля(окрім елементів в полі зору робота)
+                    System.out.print(cells[y][x].getType());//Варіант коли все поле є видимим
+                    // System.out.print(" "); //Варіант невидимого поля(окрім елементів в полі зору робота)
+
                     System.out.print(" ");
                 }
             }
@@ -103,28 +104,28 @@ public class Field {
         int y = walker.getY(); //Майбутня координата Х куди має піти робот.(для визначення локації внутрішньої перешкоди)
 
         if (x > cells[0].length - 1 || cells[y][x].getType() == WALL) {
-            walker.turnRight();
+            walker.turn(RIGHT);
             showHealthDecrease();
         } else if (cells[y][x].getType() == TRAP) {
-            walker.turnRight();
-            walker.oneRight();
+
+            walker.move(RIGHT);
             showTrapDamage();
             cells[walker.getY()][walker.getX()] = new Cell(REGULAR);
         } else if (cells[y][x].getType() == MEDKIT) {
-            walker.turnRight();
-            walker.oneRight();
+
+            walker.move(RIGHT);
             showMedCitHelp();
             cells[walker.getY()][walker.getX()] = new Cell(REGULAR);
         } else if (cells[y][x].getType() == TELEPORT) {
-            walker.turnRight();
-            walker.oneRight();
+
+            walker.move(RIGHT);
             walker.teleport();
             System.out.println("Робота телепортовано на початкову позицію!");
             printMessageHpLevel();
 
         } else {
-            walker.turnRight();
-            walker.oneRight();
+
+            walker.move(RIGHT);
             printMessageHpLevel();
 
         }
@@ -136,23 +137,23 @@ public class Field {
         int y = walker.getY();
 
         if (x < 0 || cells[y][x].getType() == WALL) {
-            walker.turnLeft();
+            walker.turn(Walker.LEFT);
             showHealthDecrease();
         } else if (cells[y][x].getType() == TRAP) {
-            walker.oneLeft();
+            walker.move(LEFT);
             showTrapDamage();
             cells[walker.getY()][walker.getX()] = new Cell(REGULAR);
         } else if (cells[y][x].getType() == MEDKIT) {
-            walker.oneLeft();
+            walker.move(LEFT);
             showMedCitHelp();
             cells[walker.getY()][walker.getX()] = new Cell(REGULAR);
         } else if (cells[y][x].getType() == TELEPORT) {
-            walker.oneLeft();
+            walker.move(LEFT);
             walker.teleport();
             System.out.println("Робота телепортовано на початкову позицію!");
             printMessageHpLevel();
         } else {
-            walker.oneLeft();
+            walker.move(LEFT);
             printMessageHpLevel();
         }
 
@@ -163,23 +164,23 @@ public class Field {
         int x = walker.getX();
 
         if (y < 0 || cells[y][x].getType() == WALL) {
-            walker.turnUp();
+            walker.turn(Walker.UP);
             showHealthDecrease();
         } else if (cells[y][x].getType() == TRAP) {
-            walker.oneUp();
+            walker.move(UP);
             showTrapDamage();
             cells[walker.getY()][walker.getX()] = new Cell(REGULAR);
         } else if (cells[y][x].getType() == MEDKIT) {
-            walker.oneUp();
+            walker.move(UP);
             showMedCitHelp();
             cells[walker.getY()][walker.getX()] = new Cell(REGULAR);
         } else if (cells[y][x].getType() == TELEPORT) {
-            walker.oneUp();
+            walker.move(UP);
             walker.teleport();
             System.out.println("Робота телепортовано на початкову позицію!");
             printMessageHpLevel();
         } else {
-            walker.oneUp();
+            walker.move(UP);
             printMessageHpLevel();
         }
     }
@@ -189,23 +190,23 @@ public class Field {
         int x = walker.getX();
 
         if (y > cells.length - 1 || cells[y][x].getType() == WALL) {
-            walker.turnDown();
+            walker.turn(Walker.DOWN);
             showHealthDecrease();
         } else if (cells[y][x].getType() == TRAP) {
-            walker.oneDown();
+            walker.turn(DOWN);
             showTrapDamage();
             cells[walker.getY()][walker.getX()] = new Cell(REGULAR);
         } else if (cells[y][x].getType() == MEDKIT) {
-            walker.oneDown();
+            walker.move(DOWN);
             showMedCitHelp();
             cells[walker.getY()][walker.getX()] = new Cell(REGULAR);
         } else if (cells[y][x].getType() == TELEPORT) {
-            walker.oneDown();
+            walker.move(DOWN);
             walker.teleport();
             System.out.println("Робота телепортовано на початкову позицію!");
             printMessageHpLevel();
         } else {
-            walker.oneDown();
+            walker.move(DOWN);
             printMessageHpLevel();
         }
 
@@ -253,7 +254,9 @@ public class Field {
 
         printMessageHpLevel();
     }
+
 }
+
 
 
 

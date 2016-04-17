@@ -16,12 +16,12 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         Cell[][] cells = {
                 {new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR)},
+                {new Cell(REGULAR), new Cell(REGULAR), new Cell(WALL), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR)},
+                {new Cell(REGULAR), new Cell(REGULAR), new Cell(WALL), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR)},
+                {new Cell(REGULAR), new Cell(REGULAR), new Cell(WALL), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(TELEPORT), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR)},
+                {new Cell(REGULAR), new Cell(WALL), new Cell(WALL), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR)},
                 {new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR)},
-                {new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR)},
-                {new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR)},
-                {new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR)},
-                {new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR)},
-                {new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR)},
+                {new Cell(REGULAR), new Cell(TRAP), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR)},
                 {new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR)},
                 {new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR)},
                 {new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR),new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR), new Cell(REGULAR)},
@@ -32,15 +32,14 @@ public class Main {
         while (true) {
             field.printField();
             System.out.println();
-            System.out.println("Поточні координати робота: вісь X(" + (walker.getX())+")" + ",вісь Y(" + (walker.getY())+")");
+            System.out.println("Поточні координати робота: вісь X(" + (walker.getX())+"),ряд("+((walker.getX()+1)+ ")" + ";вісь Y(" + (walker.getY())+"),стовбчик("+(walker.getY()+1)+")" ));
             System.out.println();
             System.out.println("Зробіть вибір дії: крок (символ 's') ,або поворот на місці (символ 't'):");
             String variant = sc.nextLine();
             switch (variant) {
+            case STEP:
 
-                case STEP:
-
-                    System.out.println("Введіть варіант бажаного напрямку КРОКУ термінами 'up','down','right','left':");
+                   System.out.println("Введіть варіант бажаного напрямку КРОКУ термінами 'up','down','right','left':");
                     String state = sc.nextLine();
                     switch (state) {
                         case UP:
@@ -78,39 +77,20 @@ public class Main {
                     String around = sc.nextLine();
                     switch (around) {
                         case UP:
-
-                            walker.turnUp();
-                            break;
-
                         case DOWN:
-
-                            walker.turnDown();
-                            break;
-
                         case RIGHT:
-
-                            walker.turnRight();
-                            break;
-
                         case LEFT:
-
-                            walker.turnLeft();
+                            walker.turn(around);
                             break;
-
                         case "exit":
                             System.exit(0);
-
                         default:
                             System.out.println("Невірний тип команди,повторіть:.");
                             break;
-
                     }
-
-                    break;
-
-                default:
                     System.out.println("Невірний тип команди,повторіть:.");
                     break;
+
             }
 
         }
